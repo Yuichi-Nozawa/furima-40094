@@ -1,20 +1,19 @@
 ## users table
 
-|Column         |Type  |Options                |
-|---------------|------|-----------------------|
-|nickname       |string|null:false             |
-|email          |string|null:false, unique:true|
-|password       |string|null:false             |
-|last_name      |string|null:false             |
-|first_name     |string|null:false             |
-|last_name_kana |string|null:false             |
-|first_name_kana|string|null:false             |
-|birth_date     |date  |null:false             |
+|Column            |Type  |Options                |
+|------------------|------|-----------------------|
+|nickname          |string|null:false             |
+|email             |string|null:false, unique:true|
+|encrypted_password|string|null:false             |
+|last_name         |string|null:false             |
+|first_name        |string|null:false             |
+|last_name_kana    |string|null:false             |
+|first_name_kana   |string|null:false             |
+|birth_date        |date  |null:false             |
 
 ### Association
-- has_many :item
+- has_many :items
 - has_many :purchase_records
-- has_one :addresses
 
 
 
@@ -23,12 +22,12 @@
 |Column             |Type      |Options                     |
 |-------------------|----------|----------------------------|
 |name               |string    |null:false                  |
-|explanation        |string    |null:false                  |
-|category           |integer   |null:false                  |
-|status             |integer   |null:false                  |
-|delivery_cost      |integer   |null:false                  |
-|region             |integer   |null:false                  |
-|days               |integer   |null:false                  |
+|explanation        |text      |null:false                  |
+|category_id        |integer   |null:false                  |
+|status_id          |integer   |null:false                  |
+|delivery_cost_id   |integer   |null:false                  |
+|region_id          |integer   |null:false                  |
+|delivery_day_id    |integer   |null:false                  |
 |price              |integer   |null:false                  |
 |user               |references|null:false, foreign_key:true|
 
@@ -46,13 +45,12 @@
 |prefecture       |integer    |null:false                  |
 |city             |string     |null:false                  |
 |street_address   |string     |null:false                  |
-|building         |string     |null:false                  |
-|phone_number     |integer    |null:false                  |
-|user             |references |null:false, foreign_key:true|
+|building         |string     |                            |
+|phone_number     |string     |null:false                  |
+|purchase_record  |references |null:false, foreign_key:true|
 
 ### Association
-- belongs_to :user
-
+- belongs_to :purchase_record
 
 
 ## purchase_records table
@@ -67,3 +65,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :address
