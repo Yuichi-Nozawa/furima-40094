@@ -42,7 +42,7 @@
 |Column           |Type       |Options                     |
 |-----------------|-----------|----------------------------|
 |post_code        |integer    |null:false                  |
-|prefecture       |integer    |null:false                  |
+|region_id        |integer    |null:false                  |
 |city             |string     |null:false                  |
 |street_address   |string     |null:false                  |
 |building         |string     |                            |
