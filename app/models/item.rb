@@ -11,7 +11,6 @@ class Item < ApplicationRecord
   validates :delivery_day_id, presence: true, numericality: { other_than: 1 }
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
   validates :image, presence: true
-  validates :user, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, class_name: 'CategoryId'
