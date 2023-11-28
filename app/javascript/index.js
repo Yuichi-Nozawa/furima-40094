@@ -8,11 +8,11 @@ function priceCalc() {
 
     if (!isNaN(priceValue)) {
       const calculatedTax = priceValue * 0.1;
-      addTax.innerHTML = calculatedTax.toFixed(0);
-      profit.innerHTML = (priceValue - calculatedTax).toFixed(0);
+      addTax.innerHTML = Math.floor(calculatedTax).toFixed(0);
+      profit.innerHTML = Math.floor(priceValue - calculatedTax).toFixed(0);
     } else {
-      addTax.innerHTML = "0.00";
-      profit.innerHTML = "0.00";
+      addTax.innerHTML = "0";
+      profit.innerHTML = "0";
     }
   });
 }

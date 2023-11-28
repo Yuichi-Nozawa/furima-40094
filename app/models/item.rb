@@ -9,9 +9,9 @@ class Item < ApplicationRecord
   validates :delivery_cost_id, presence: true, numericality: { other_than: 1 }
   validates :region_id, presence: true, numericality: { other_than: 1 }
   validates :delivery_day_id, presence: true, numericality: { other_than: 1 }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }, format: { with: /\A\d+\z/, message: "は半角数字で入力してください" }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, only_integer: true }
   validates :image, presence: true
-  # validates :user_id, presence: true
+  validates :user, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, class_name: 'CategoryId'
