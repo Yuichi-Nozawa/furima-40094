@@ -10,7 +10,7 @@ class PurchaseRecordAddress
     validates :phone_number, length: { minimum: 10, maximum: 11 }, format: { with: /\A\d{10,11}\z/, message: 'should be 10 to 11 digits' }
     validates :user_id
     validates :item_id
-    validates :token, presence: true
+    validates :token
   end
 
   def save
