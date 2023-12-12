@@ -12,6 +12,10 @@ RSpec.describe PurchaseRecordAddress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@purchase_record_address).to be_valid
       end
+      it '建物名の入力がなくても登録できる' do
+        @purchase_record_address.building = ''
+        expect(@purchase_record_address).to be_valid
+      end
     end
 
     context '内容に問題がある場合' do
@@ -54,6 +58,11 @@ RSpec.describe PurchaseRecordAddress, type: :model do
         @purchase_record_address.phone_number = '111111111111'
         @purchase_record_address.valid?
         expect(@purchase_record_address.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+      it 'phone_numberは英数字以外が含まれている場合は保存できないこと' do
+        @purchase_record_address.phone_number = 'AAAAAAAAAA'
+        @purchase_record_address.valid?
+        expect(@purchase_record_address.errors.full_messages).to include("Phone number should be 10 to 11 digits")
       end
       it 'tokenが空だと保存できないこと' do
         @purchase_record_address.token = nil
