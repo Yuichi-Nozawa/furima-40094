@@ -25,6 +25,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    unless @item.purchase_record == nil
+      redirect_to '/'
+    end
   end
 
   def update

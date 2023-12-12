@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :items
+  has_many :purchase_records
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/, message: "は半角英数字混合で入力してください" }

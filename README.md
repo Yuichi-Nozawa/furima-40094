@@ -51,7 +51,7 @@
 
 ### Association
 - belongs_to :purchase_record
-
+  
 
 ## purchase_records table
 
